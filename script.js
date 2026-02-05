@@ -207,6 +207,10 @@ class MBTITest {
         if ('vibrate' in navigator) {
             navigator.vibrate(50);
         }
+
+        setTimeout(() => {
+            this.nextQuestion();
+        }, 300);
     }
 
     updateProgress() {
