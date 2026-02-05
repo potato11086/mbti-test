@@ -143,6 +143,312 @@ const questionsData = {
                 { "text": "按优先级逐一完成", "value": "J" },
                 { "text": "同时进行多个任务", "value": "P" }
             ]
+        },
+        {
+            "id": 17,
+            "dimension": "EI",
+            "question": "在聚会中，你通常会：",
+            "options": [
+                { "text": "主动结识新朋友", "value": "E" },
+                { "text": "与熟悉的朋友深入交谈", "value": "I" }
+            ]
+        },
+        {
+            "id": 18,
+            "dimension": "EI",
+            "question": "在需要专注工作时，你更喜欢：",
+            "options": [
+                { "text": "在团队环境中协作", "value": "E" },
+                { "text": "独自安静地工作", "value": "I" }
+            ]
+        },
+        {
+            "id": 19,
+            "dimension": "EI",
+            "question": "当你有重要消息要分享时：",
+            "options": [
+                { "text": "迫不及待地告诉很多人", "value": "E" },
+                { "text": "先思考再告诉少数人", "value": "I" }
+            ]
+        },
+        {
+            "id": 20,
+            "dimension": "EI",
+            "question": "在陌生环境中，你倾向于：",
+            "options": [
+                { "text": "主动与人交流互动", "value": "E" },
+                { "text": "观察环境，保持低调", "value": "I" }
+            ]
+        },
+        {
+            "id": 21,
+            "dimension": "EI",
+            "question": "你更喜欢哪种沟通方式：",
+            "options": [
+                { "text": "面对面的即时交流", "value": "E" },
+                { "text": "通过文字或邮件深思熟虑", "value": "I" }
+            ]
+        },
+        {
+            "id": 22,
+            "dimension": "EI",
+            "question": "在公开演讲时，你通常：",
+            "options": [
+                { "text": "享受与观众互动", "value": "E" },
+                { "text": "感到紧张，希望尽快结束", "value": "I" }
+            ]
+        },
+        {
+            "id": 23,
+            "dimension": "EI",
+            "question": "你的能量来源更多来自：",
+            "options": [
+                { "text": "外部世界和人际互动", "value": "E" },
+                { "text": "内心世界和独自思考", "value": "I" }
+            ]
+        },
+        {
+            "id": 24,
+            "dimension": "EI",
+            "question": "在社交场合中，你通常：",
+            "options": [
+                { "text": "成为话题的中心", "value": "E" },
+                { "text": "在一旁倾听观察", "value": "I" }
+            ]
+        },
+        {
+            "id": 25,
+            "dimension": "SN",
+            "question": "你更相信：",
+            "options": [
+                { "text": "确凿的事实和数据", "value": "S" },
+                { "text": "直觉和灵感", "value": "N" }
+            ]
+        },
+        {
+            "id": 26,
+            "dimension": "SN",
+            "question": "在阅读时，你更关注：",
+            "options": [
+                { "text": "具体情节和细节描述", "value": "S" },
+                { "text": "主题思想和深层含义", "value": "N" }
+            ]
+        },
+        {
+            "id": 27,
+            "dimension": "SN",
+            "question": "你更喜欢哪种学习方式：",
+            "options": [
+                { "text": "循序渐进，注重实践", "value": "S" },
+                { "text": "跳跃式学习，理解概念", "value": "N" }
+            ]
+        },
+        {
+            "id": 28,
+            "dimension": "SN",
+            "question": "在创意工作中，你倾向于：",
+            "options": [
+                { "text": "基于现实和可行性", "value": "S" },
+                { "text": "基于想象力和可能性", "value": "N" }
+            ]
+        },
+        {
+            "id": 29,
+            "dimension": "SN",
+            "question": "你更擅长：",
+            "options": [
+                { "text": "处理具体事务和细节", "value": "S" },
+                { "text": "发现潜在模式和趋势", "value": "N" }
+            ]
+        },
+        {
+            "id": 30,
+            "dimension": "SN",
+            "question": "在面对新情况时，你首先：",
+            "options": [
+                { "text": "观察具体细节", "value": "S" },
+                { "text": "思考整体意义", "value": "N" }
+            ]
+        },
+        {
+            "id": 31,
+            "dimension": "SN",
+            "question": "你更欣赏：",
+            "options": [
+                { "text": "实用性和可靠性", "value": "S" },
+                { "text": "创新性和独特性", "value": "N" }
+            ]
+        },
+        {
+            "id": 32,
+            "dimension": "SN",
+            "question": "在解决问题时，你倾向于：",
+            "options": [
+                { "text": "使用已知的方法", "value": "S" },
+                { "text": "尝试新的方法", "value": "N" }
+            ]
+        },
+        {
+            "id": 33,
+            "dimension": "TF",
+            "question": "在评价他人时，你更看重：",
+            "options": [
+                { "text": "能力和表现", "value": "T" },
+                { "text": "努力和态度", "value": "F" }
+            ]
+        },
+        {
+            "id": 34,
+            "dimension": "TF",
+            "question": "在团队合作中，你更注重：",
+            "options": [
+                { "text": "效率和结果", "value": "T" },
+                { "text": "团队和谐和氛围", "value": "F" }
+            ]
+        },
+        {
+            "id": 35,
+            "dimension": "TF",
+            "question": "面对冲突时，你倾向于：",
+            "options": [
+                { "text": "直接指出问题", "value": "T" },
+                { "text": "考虑各方感受", "value": "F" }
+            ]
+        },
+        {
+            "id": 36,
+            "dimension": "TF",
+            "question": "你更相信：",
+            "options": [
+                { "text": "逻辑推理和客观分析", "value": "T" },
+                { "text": "个人直觉和情感判断", "value": "F" }
+            ]
+        },
+        {
+            "id": 37,
+            "dimension": "TF",
+            "question": "在给出建议时，你更倾向于：",
+            "options": [
+                { "text": "提供客观的分析", "value": "T" },
+                { "text": "给予情感上的支持", "value": "F" }
+            ]
+        },
+        {
+            "id": 38,
+            "dimension": "TF",
+            "question": "你认为更好的领导风格是：",
+            "options": [
+                { "text": "公正严格，按规则办事", "value": "T" },
+                { "text": "关怀体贴，注重团队感受", "value": "F" }
+            ]
+        },
+        {
+            "id": 39,
+            "dimension": "TF",
+            "question": "在处理错误时，你倾向于：",
+            "options": [
+                { "text": "分析原因，避免再次发生", "value": "T" },
+                { "text": "安慰对方，减轻其压力", "value": "F" }
+            ]
+        },
+        {
+            "id": 40,
+            "dimension": "TF",
+            "question": "你更看重：",
+            "options": [
+                { "text": "真理和公正", "value": "T" },
+                { "text": "同情和善良", "value": "F" }
+            ]
+        },
+        {
+            "id": 41,
+            "dimension": "TF",
+            "question": "在做重要决定时，你首先考虑：",
+            "options": [
+                { "text": "利弊分析和逻辑推理", "value": "T" },
+                { "text": "对他人的影响和感受", "value": "F" }
+            ]
+        },
+        {
+            "id": 42,
+            "dimension": "TF",
+            "question": "你认为更有效的沟通是：",
+            "options": [
+                { "text": "直接、清晰、逻辑性强", "value": "T" },
+                { "text": "温和、体贴、富有同理心", "value": "F" }
+            ]
+        },
+        {
+            "id": 43,
+            "dimension": "JP",
+            "question": "在旅行计划时，你倾向于：",
+            "options": [
+                { "text": "制定详细行程表", "value": "J" },
+                { "text": "大致规划，随性调整", "value": "P" }
+            ]
+        },
+        {
+            "id": 44,
+            "dimension": "JP",
+            "question": "你的工作风格更像是：",
+            "options": [
+                { "text": "按部就班，有计划性", "value": "J" },
+                { "text": "灵活多变，适应性强", "value": "P" }
+            ]
+        },
+        {
+            "id": 45,
+            "dimension": "JP",
+            "question": "面对突发情况，你通常：",
+            "options": [
+                { "text": "感到不安，希望有计划", "value": "J" },
+                { "text": "兴奋，喜欢挑战", "value": "P" }
+            ]
+        },
+        {
+            "id": 46,
+            "dimension": "JP",
+            "question": "你更喜欢：",
+            "options": [
+                { "text": "事情有明确的结果和期限", "value": "J" },
+                { "text": "保持开放，留有更多可能性", "value": "P" }
+            ]
+        },
+        {
+            "id": 47,
+            "dimension": "JP",
+            "question": "在购物时，你倾向于：",
+            "options": [
+                { "text": "列清单，按计划购买", "value": "J" },
+                { "text": "随性浏览，看到喜欢的就买", "value": "P" }
+            ]
+        },
+        {
+            "id": 48,
+            "dimension": "JP",
+            "question": "你的决策方式更像是：",
+            "options": [
+                { "text": "快速果断，不喜欢拖延", "value": "J" },
+                { "text": "收集信息，保持开放", "value": "P" }
+            ]
+        },
+        {
+            "id": 49,
+            "dimension": "JP",
+            "question": "在项目管理中，你更注重：",
+            "options": [
+                { "text": "时间表和里程碑", "value": "J" },
+                { "text": "灵活性和适应性", "value": "P" }
+            ]
+        },
+        {
+            "id": 50,
+            "dimension": "JP",
+            "question": "你更喜欢的生活态度是：",
+            "options": [
+                { "text": "有序、可控、可预测", "value": "J" },
+                { "text": "自由、灵活、充满惊喜", "value": "P" }
+            ]
         }
     ]
 };
