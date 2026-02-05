@@ -22,6 +22,32 @@ class MBTITest {
         await this.loadData();
         this.bindEvents();
         this.updateTotalQuestions();
+        this.setupMobileOptimizations();
+    }
+
+    setupMobileOptimizations() {
+        if ('ontouchstart' in window) {
+            document.body.classList.add('touch-device');
+            
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('touchstart', function() {
+                    this.classList.add('touch-active');
+                }, { passive: true });
+                
+                option.addEventListener('touchend', function() {
+                    this.classList.remove('touch-active');
+                }, { passive: true });
+            });
+        }
+
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
     }
 
     async loadData() {
@@ -33,19 +59,63 @@ class MBTITest {
             this.mbtiTypes = await typesResponse.json();
         } catch (error) {
             console.error('Error loading data:', error);
+            alert('加载数据失败，请刷新页面重试');
         }
     }
 
     bindEvents() {
-        document.getElementById('start-btn').addEventListener('click', () => this.startTest());
-        document.getElementById('prev-btn').addEventListener('click', () => this.prevQuestion());
-        document.getElementById('next-btn').addEventListener('click', () => this.nextQuestion());
-        document.getElementById('restart-btn').addEventListener('click', () => this.restartTest());
-        document.getElementById('share-btn').addEventListener('click', () => this.shareResult());
+        const startBtn = document.getElementById('start-btn');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const restartBtn = document.getElementById('restart-btn');
+        const shareBtn = document.getElementById('share-btn');
+
+        if (startBtn) {
+            startBtn.addEventListener('click', () => this.startTest());
+            startBtn.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                this.startTest();
+            }, { passive: false });
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => this.prevQuestion());
+            prevBtn.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                this.prevQuestion();
+            }, { passive: false });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => this.nextQuestion());
+            nextBtn.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                this.nextQuestion();
+            }, { passive: false });
+        }
+
+        if (restartBtn) {
+            restartBtn.addEventListener('click', () => this.restartTest());
+            restartBtn.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                this.restartTest();
+            }, { passive: false });
+        }
+
+        if (shareBtn) {
+            shareBtn.addEventListener('click', () => this.shareResult());
+            shareBtn.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                this.shareResult();
+            }, { passive: false });
+        }
     }
 
     updateTotalQuestions() {
-        document.getElementById('total-questions').textContent = this.questions.questions.length;
+        const totalQuestionsElement = document.getElementById('total-questions');
+        if (totalQuestionsElement) {
+            totalQuestionsElement.textContent = this.questions.questions.length;
+        }
     }
 
     startTest() {
@@ -64,20 +134,39 @@ class MBTITest {
         
         this.showScreen('quiz-screen');
         this.displayQuestion();
+        this.scrollToTop();
+    }
+
+    scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     }
 
     showScreen(screenId) {
         document.querySelectorAll('.screen').forEach(screen => {
             screen.classList.remove('active');
         });
-        document.getElementById(screenId).classList.add('active');
+        const targetScreen = document.getElementById(screenId);
+        if (targetScreen) {
+            targetScreen.classList.add('active');
+        }
     }
 
     displayQuestion() {
         const question = this.questions.questions[this.currentQuestionIndex];
         
-        document.getElementById('current-question').textContent = this.currentQuestionIndex + 1;
-        document.getElementById('question-text').textContent = question.question;
+        const currentQuestionElement = document.getElementById('current-question');
+        const questionTextElement = document.getElementById('question-text');
+        
+        if (currentQuestionElement) {
+            currentQuestionElement.textContent = this.currentQuestionIndex + 1;
+        }
+        
+        if (questionTextElement) {
+            questionTextElement.textContent = question.question;
+        }
         
         const optionsContainer = document.getElementById('options-container');
         optionsContainer.innerHTML = '';
@@ -94,6 +183,14 @@ class MBTITest {
             }
             
             optionElement.addEventListener('click', () => this.selectOption(question.id, option.value));
+            
+            if ('ontouchstart' in window) {
+                optionElement.addEventListener('touchstart', (e) => {
+                    e.preventDefault();
+                    this.selectOption(question.id, option.value);
+                }, { passive: false });
+            }
+            
             optionsContainer.appendChild(optionElement);
         });
         
@@ -115,35 +212,47 @@ class MBTITest {
         });
         
         this.updateNavigationButtons();
+        
+        if ('vibrate' in navigator) {
+            navigator.vibrate(50);
+        }
     }
 
     updateProgress() {
         const progress = ((this.currentQuestionIndex + 1) / this.questions.questions.length) * 100;
-        document.getElementById('progress-fill').style.width = `${progress}%`;
+        const progressFill = document.getElementById('progress-fill');
+        if (progressFill) {
+            progressFill.style.width = `${progress}%`;
+        }
     }
 
     updateNavigationButtons() {
         const prevBtn = document.getElementById('prev-btn');
         const nextBtn = document.getElementById('next-btn');
         
-        prevBtn.disabled = this.currentQuestionIndex === 0;
+        if (prevBtn) {
+            prevBtn.disabled = this.currentQuestionIndex === 0;
+        }
         
         const currentQuestion = this.questions.questions[this.currentQuestionIndex];
         const hasAnswer = this.answers[currentQuestion.id] !== undefined;
         
-        if (this.currentQuestionIndex === this.questions.questions.length - 1) {
-            nextBtn.textContent = '查看结果';
-        } else {
-            nextBtn.textContent = '下一题';
+        if (nextBtn) {
+            if (this.currentQuestionIndex === this.questions.questions.length - 1) {
+                nextBtn.textContent = '查看结果';
+            } else {
+                nextBtn.textContent = '下一题';
+            }
+            
+            nextBtn.disabled = !hasAnswer;
         }
-        
-        nextBtn.disabled = !hasAnswer;
     }
 
     prevQuestion() {
         if (this.currentQuestionIndex > 0) {
             this.currentQuestionIndex--;
             this.displayQuestion();
+            this.scrollToTop();
         }
     }
 
@@ -151,6 +260,7 @@ class MBTITest {
         if (this.currentQuestionIndex < this.questions.questions.length - 1) {
             this.currentQuestionIndex++;
             this.displayQuestion();
+            this.scrollToTop();
         } else {
             this.calculateResult();
         }
@@ -190,6 +300,7 @@ class MBTITest {
 
     showLoadingScreen(mbtiType) {
         this.showScreen('loading-screen');
+        this.scrollToTop();
         
         setTimeout(() => {
             this.showResult(mbtiType);
@@ -199,8 +310,16 @@ class MBTITest {
     showResult(mbtiType) {
         const typeData = this.mbtiTypes.mbtiTypes[mbtiType];
         
-        document.getElementById('mbti-type').textContent = mbtiType;
-        document.getElementById('mbti-name').textContent = typeData.name;
+        const mbtiTypeElement = document.getElementById('mbti-type');
+        const mbtiNameElement = document.getElementById('mbti-name');
+        
+        if (mbtiTypeElement) {
+            mbtiTypeElement.textContent = mbtiType;
+        }
+        
+        if (mbtiNameElement) {
+            mbtiNameElement.textContent = typeData.name;
+        }
         
         const keywordsContainer = document.getElementById('keywords');
         keywordsContainer.innerHTML = '';
@@ -211,7 +330,10 @@ class MBTITest {
             keywordsContainer.appendChild(keywordElement);
         });
         
-        document.getElementById('description').textContent = typeData.description;
+        const descriptionElement = document.getElementById('description');
+        if (descriptionElement) {
+            descriptionElement.textContent = typeData.description;
+        }
         
         const strengthsContainer = document.getElementById('strengths');
         strengthsContainer.innerHTML = '';
@@ -241,6 +363,7 @@ class MBTITest {
         this.displayDimensionsChart();
         
         this.showScreen('result-screen');
+        this.scrollToTop();
     }
 
     displayDimensionsChart() {
@@ -302,11 +425,15 @@ class MBTITest {
         };
         
         this.showScreen('welcome-screen');
+        this.scrollToTop();
     }
 
     shareResult() {
-        const mbtiType = document.getElementById('mbti-type').textContent;
-        const mbtiName = document.getElementById('mbti-name').textContent;
+        const mbtiTypeElement = document.getElementById('mbti-type');
+        const mbtiNameElement = document.getElementById('mbti-name');
+        
+        const mbtiType = mbtiTypeElement ? mbtiTypeElement.textContent : '';
+        const mbtiName = mbtiNameElement ? mbtiNameElement.textContent : '';
         
         const shareText = `我完成了 MBTI 性格测试，我的性格类型是 ${mbtiType} - ${mbtiName}！快来测测你的性格类型吧！`;
         
