@@ -1,7 +1,7 @@
 class MBTITest {
     constructor() {
-        this.questions = [];
-        this.mbtiTypes = {};
+        this.questions = questionsData.questions || [];
+        this.mbtiTypes = mbtiTypesData.mbtiTypes || {};
         this.currentQuestionIndex = 0;
         this.answers = {};
         this.scores = {
@@ -18,8 +18,7 @@ class MBTITest {
         this.init();
     }
 
-    async init() {
-        await this.loadData();
+    init() {
         this.bindEvents();
         this.updateTotalQuestions();
         this.setupMobileOptimizations();
@@ -48,19 +47,6 @@ class MBTITest {
             }
             lastTouchEnd = now;
         }, false);
-    }
-
-    async loadData() {
-        try {
-            const questionsResponse = await fetch('questions.json');
-            this.questions = await questionsResponse.json();
-            
-            const typesResponse = await fetch('mbti-types.json');
-            this.mbtiTypes = await typesResponse.json();
-        } catch (error) {
-            console.error('Error loading data:', error);
-            alert('加载数据失败，请刷新页面重试');
-        }
     }
 
     bindEvents() {
@@ -114,7 +100,7 @@ class MBTITest {
     updateTotalQuestions() {
         const totalQuestionsElement = document.getElementById('total-questions');
         if (totalQuestionsElement) {
-            totalQuestionsElement.textContent = this.questions.questions.length;
+            totalQuestionsElement.textContent = this.questions.length;
         }
     }
 
@@ -155,7 +141,12 @@ class MBTITest {
     }
 
     displayQuestion() {
-        const question = this.questions.questions[this.currentQuestionIndex];
+        const question = this.questions[this.currentQuestionIndex];
+        
+        if (!question) {
+            console.error('Question not found at index:', this.currentQuestionIndex);
+            return;
+        }
         
         const currentQuestionElement = document.getElementById('current-question');
         const questionTextElement = document.getElementById('question-text');
@@ -219,7 +210,7 @@ class MBTITest {
     }
 
     updateProgress() {
-        const progress = ((this.currentQuestionIndex + 1) / this.questions.questions.length) * 100;
+        const progress = ((this.currentQuestionIndex + 1) / this.questions.length) * 100;
         const progressFill = document.getElementById('progress-fill');
         if (progressFill) {
             progressFill.style.width = `${progress}%`;
@@ -234,11 +225,11 @@ class MBTITest {
             prevBtn.disabled = this.currentQuestionIndex === 0;
         }
         
-        const currentQuestion = this.questions.questions[this.currentQuestionIndex];
-        const hasAnswer = this.answers[currentQuestion.id] !== undefined;
+        const currentQuestion = this.questions[this.currentQuestionIndex];
+        const hasAnswer = currentQuestion && this.answers[currentQuestion.id] !== undefined;
         
         if (nextBtn) {
-            if (this.currentQuestionIndex === this.questions.questions.length - 1) {
+            if (this.currentQuestionIndex === this.questions.length - 1) {
                 nextBtn.textContent = '查看结果';
             } else {
                 nextBtn.textContent = '下一题';
@@ -257,7 +248,7 @@ class MBTITest {
     }
 
     nextQuestion() {
-        if (this.currentQuestionIndex < this.questions.questions.length - 1) {
+        if (this.currentQuestionIndex < this.questions.length - 1) {
             this.currentQuestionIndex++;
             this.displayQuestion();
             this.scrollToTop();
@@ -278,7 +269,7 @@ class MBTITest {
             P: 0
         };
         
-        this.questions.questions.forEach(question => {
+        this.questions.forEach(question => {
             const answer = this.answers[question.id];
             if (answer) {
                 this.scores[answer]++;
@@ -308,7 +299,13 @@ class MBTITest {
     }
 
     showResult(mbtiType) {
-        const typeData = this.mbtiTypes.mbtiTypes[mbtiType];
+        const typeData = this.mbtiTypes[mbtiType];
+        
+        if (!typeData) {
+            console.error('MBTI type data not found:', mbtiType);
+            alert('无法加载性格类型数据，请刷新页面重试');
+            return;
+        }
         
         const mbtiTypeElement = document.getElementById('mbti-type');
         const mbtiNameElement = document.getElementById('mbti-name');
