@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBTI 性格测试</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>MBTI 性格测试</h1>
+            <p class="subtitle">发现你的真实性格类型</p>
+        </header>
+
+        <div id="welcome-screen" class="screen active">
+            <div class="welcome-content">
+                <h2>欢迎来到 MBTI 性格测试</h2>
+                <p>MBTI（迈尔斯-布里格斯类型指标）是一种广泛使用的性格测试工具，可以帮助你了解自己的性格特点、优势和适合的职业方向。</p>
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-icon">🎯</div>
+                        <h3>精准评估</h3>
+                        <p>基于四个维度的科学评估</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">📊</div>
+                        <h3>详细分析</h3>
+                        <p>深入了解你的性格特点</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">💼</div>
+                        <h3>职业建议</h3>
+                        <p>获得适合的职业方向建议</p>
+                    </div>
+                </div>
+                <div class="dimensions-info">
+                    <h3>四个评估维度</h3>
+                    <div class="dimension">
+                        <span class="dimension-label">E (外向)</span> vs <span class="dimension-label">I (内向)</span>
+                        <span class="dimension-desc">能量来源</span>
+                    </div>
+                    <div class="dimension">
+                        <span class="dimension-label">S (实感)</span> vs <span class="dimension-label">N (直觉)</span>
+                        <span class="dimension-desc">信息获取方式</span>
+                    </div>
+                    <div class="dimension">
+                        <span class="dimension-label">T (思考)</span> vs <span class="dimension-label">F (情感)</span>
+                        <span class="dimension-desc">决策方式</span>
+                    </div>
+                    <div class="dimension">
+                        <span class="dimension-label">J (判断)</span> vs <span class="dimension-label">P (感知)</span>
+                        <span class="dimension-desc">生活方式</span>
+                    </div>
+                </div>
+                <button id="start-btn" class="btn btn-primary">开始测试</button>
+            </div>
+        </div>
+
+        <div id="quiz-screen" class="screen">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <div class="question-counter">
+                <span id="current-question">1</span> / <span id="total-questions">16</span>
+            </div>
+            <div id="question-container" class="question-container">
+                <h2 id="question-text" class="question-text"></h2>
+                <div id="options-container" class="options-container"></div>
+            </div>
+            <div class="navigation">
+                <button id="prev-btn" class="btn btn-secondary" disabled>上一题</button>
+                <button id="next-btn" class="btn btn-primary" disabled>下一题</button>
+            </div>
+        </div>
+
+        <div id="loading-screen" class="screen">
+            <div class="loading-content">
+                <div class="spinner"></div>
+                <h2>正在分析您的性格...</h2>
+                <p>请稍候，我们正在为您生成详细的性格报告</p>
+            </div>
+        </div>
+
+        <div id="result-screen" class="screen">
+            <div class="result-content">
+                <div class="result-header">
+                    <h2>您的 MBTI 性格类型是</h2>
+                    <div id="mbti-type" class="mbti-type"></div>
+                    <div id="mbti-name" class="mbti-name"></div>
+                </div>
+                
+                <div class="result-section">
+                    <h3>性格关键词</h3>
+                    <div id="keywords" class="keywords"></div>
+                </div>
+
+                <div class="result-section">
+                    <h3>性格描述</h3>
+                    <p id="description" class="description"></p>
+                </div>
+
+                <div class="result-section">
+                    <h3>您的优势</h3>
+                    <ul id="strengths" class="strengths"></ul>
+                </div>
+
+                <div class="result-section">
+                    <h3>需要注意的方面</h3>
+                    <ul id="weaknesses" class="weaknesses"></ul>
+                </div>
+
+                <div class="result-section">
+                    <h3>适合的职业方向</h3>
+                    <div id="career" class="career"></div>
+                </div>
+
+                <div class="result-section">
+                    <h3>维度分析</h3>
+                    <div id="dimensions-chart" class="dimensions-chart"></div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="restart-btn" class="btn btn-primary">重新测试</button>
+                    <button id="share-btn" class="btn btn-secondary">分享结果</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
