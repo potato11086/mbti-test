@@ -1,0 +1,148 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "dimension": "EI",
+      "question": "在社交活动中，你通常会：",
+      "options": [
+        { "text": "主动与很多人交谈", "value": "E" },
+        { "text": "只与少数熟悉的人交谈", "value": "I" }
+      ]
+    },
+    {
+      "id": 2,
+      "dimension": "EI",
+      "question": "当你感到疲惫时，你更倾向于：",
+      "options": [
+        { "text": "和朋友一起活动来恢复精力", "value": "E" },
+        { "text": "独自休息来恢复精力", "value": "I" }
+      ]
+    },
+    {
+      "id": 3,
+      "dimension": "EI",
+      "question": "在团队工作中，你更喜欢：",
+      "options": [
+        { "text": "在讨论中表达自己的想法", "value": "E" },
+        { "text": "先倾听再在适当时候发言", "value": "I" }
+      ]
+    },
+    {
+      "id": 4,
+      "dimension": "EI",
+      "question": "周末时，你更愿意：",
+      "options": [
+        { "text": "参加聚会或外出活动", "value": "E" },
+        { "text": "在家看书或做自己喜欢的事", "value": "I" }
+      ]
+    },
+    {
+      "id": 5,
+      "dimension": "SN",
+      "question": "在学习新事物时，你更注重：",
+      "options": [
+        { "text": "具体的细节和实际应用", "value": "S" },
+        { "text": "整体概念和理论框架", "value": "N" }
+      ]
+    },
+    {
+      "id": 6,
+      "dimension": "SN",
+      "question": "面对问题时，你倾向于：",
+      "options": [
+        { "text": "依赖过去的经验和事实", "value": "S" },
+        { "text": "寻找新的可能性和创新方案", "value": "N" }
+      ]
+    },
+    {
+      "id": 7,
+      "dimension": "SN",
+      "question": "你更喜欢：",
+      "options": [
+        { "text": "处理具体、实际的任务", "value": "S" },
+        { "text": "探索抽象的想法和概念", "value": "N" }
+      ]
+    },
+    {
+      "id": 8,
+      "dimension": "SN",
+      "question": "在描述事物时，你倾向于：",
+      "options": [
+        { "text": "用具体的例子和细节", "value": "S" },
+        { "text": "用比喻和抽象概念", "value": "N" }
+      ]
+    },
+    {
+      "id": 9,
+      "dimension": "TF",
+      "question": "做决定时，你更看重：",
+      "options": [
+        { "text": "逻辑分析和客观事实", "value": "T" },
+        { "text": "个人价值观和他人感受", "value": "F" }
+      ]
+    },
+    {
+      "id": 10,
+      "dimension": "TF",
+      "question": "当朋友遇到困难时，你通常会：",
+      "options": [
+        { "text": "提供解决方案和建议", "value": "T" },
+        { "text": "给予情感支持和理解", "value": "F" }
+      ]
+    },
+    {
+      "id": 11,
+      "dimension": "TF",
+      "question": "你认为更重要的事情是：",
+      "options": [
+        { "text": "公正和原则", "value": "T" },
+        { "text": "和谐和人际关系", "value": "F" }
+      ]
+    },
+    {
+      "id": 12,
+      "dimension": "TF",
+      "question": "在争论中，你倾向于：",
+      "options": [
+        { "text": "坚持自己的观点和逻辑", "value": "T" },
+        { "text": "考虑对方的感受并寻求妥协", "value": "F" }
+      ]
+    },
+    {
+      "id": 13,
+      "dimension": "JP",
+      "question": "你更喜欢的工作方式是：",
+      "options": [
+        { "text": "提前制定详细计划并按计划执行", "value": "J" },
+        { "text": "灵活应对，根据情况调整", "value": "P" }
+      ]
+    },
+    {
+      "id": 14,
+      "dimension": "JP",
+      "question": "面对截止日期，你通常会：",
+      "options": [
+        { "text": "提前完成并留出缓冲时间", "value": "J" },
+        { "text": "在最后时刻集中精力完成", "value": "P" }
+      ]
+    },
+    {
+      "id": 15,
+      "dimension": "JP",
+      "question": "你的生活环境通常是：",
+      "options": [
+        { "text": "整洁有序，物品摆放固定", "value": "J" },
+        { "text": "随性摆放，方便为主", "value": "P" }
+      ]
+    },
+    {
+      "id": 16,
+      "dimension": "JP",
+      "question": "在处理多个任务时，你倾向于：",
+      "options": [
+        { "text": "按优先级逐一完成", "value": "J" },
+        { "text": "同时进行多个任务", "value": "P" }
+      ]
+    }
+  ]
+}
